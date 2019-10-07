@@ -283,7 +283,8 @@ export default {
                 window.WebSocket = window.WebSocket || window.MozWebSocket;
 
                 var connection = new WebSocket(
-                    "ws://192.168.1.73:8888/scrapData"
+                    // "ws://192.168.1.73:8888/scrapData"
+                    "ws://172.31.184.192:8888/scrapData"
                 );
 
                 connection.onopen = function() {
@@ -304,7 +305,7 @@ export default {
                             newObject["Folio"] = key;
                             this.items.push(newObject);
                         });
-                        // console.log(this.items);
+                        console.log(this.items);
                     } else {
                         connection.send("datos requeridos");
                     }

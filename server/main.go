@@ -19,8 +19,9 @@ func main() {
 func scraperData(info map[string]dataStruct) {
 	// urlProgramas := "http://webserver.siiaa.siu.buap.mx/serv_social/ss_oferta_ss?se=ABE63459925DAD50"
 	// urlProgramasPracticasProfesionalesFCC := "http://webserver.siiaa.siu.buap.mx/serv_social/Ss_OFERTA_prog?se=CF593C89C3F382C4&un=695238F6612D0665"
-	urlProgramasPracticasProfesionalesFCC := "http://webserver.siiaa.siu.buap.mx/serv_social/SS_ALUM_AUTSV_VAL?PIDM=8689CF68DE8A0DEC3B43BE3456A93921"
+	// urlProgramasPracticasProfesionalesFCC := "http://webserver.siiaa.siu.buap.mx/serv_social/SS_ALUM_AUTSV_VAL?PIDM=8689CF68DE8A0DEC3B43BE3456A93921"
 	// urlProgramasPracticasProfesionalesFCC := "http://localhost/x/temp/practicasProfesionales/temp/ppp/temp.html"
+	urlProgramasPracticasProfesionalesFCC := "http://webserver.siiaa.siu.buap.mx/serv_social/SS_ALUM_AUTSV_OFERTA_B?pidm=92143525"
 
 	c := colly.NewCollector(
 		// colly.AllowedDomains("https://www.clotheswebsite.com/"),
@@ -28,7 +29,7 @@ func scraperData(info map[string]dataStruct) {
 		// colly.MaxDepth(5), // keeping crawling limited for our initial experiments
 		colly.Async(true),
 	)
-	c.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 50})
+	c.Limit(&colly.LimitRule{DomainGlob: "*", Parallelism: 10})
 	space := regexp.MustCompile(`\s+`)
 
 	c.OnHTML(`table`, func(e *colly.HTMLElement) {
@@ -242,7 +243,7 @@ wg.Add(1)
 					moreInfoProgramHTML := colly.NewCollector(
 						colly.CacheDir(".programasPracticasProfesionalesFCC_cache/" + folio),
 					)
-					moreInfoProgramHTML.OnHTML(`table[class=tableBUAPGrisAlternaRows]`, func(element *colly.HTMLElement) {
+					// moreInfoProgramHTML.OnHTML(`table[class=tableBUAPGrisAlternaRows]`, func(element *colly.HTMLElement) {
 
 						fmt.Println(element.Text)
 						fmt.Println("--------------------------------------------------------")
