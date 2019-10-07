@@ -283,7 +283,8 @@ export default {
                 window.WebSocket = window.WebSocket || window.MozWebSocket;
 
                 var connection = new WebSocket(
-                    // "ws://192.168.1.73:8888/scrapData"
+
+                    // cambiar por la ip del servidpr actual
                     "ws://172.31.184.192:8888/scrapData"
                 );
 
