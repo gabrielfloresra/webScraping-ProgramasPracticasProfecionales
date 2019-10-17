@@ -15,8 +15,8 @@
                             <td>{{ item.NombrePrograma }}</td>
                             <td>{{ item.Area }}</td>
                             <td>{{ item.Empresa }}</td>
-                            <td v-if="item.ApoyoEconomico != ''">{{ item.ApoyoEconomico }}</td>
-                            <td v-else>{{item.OtrosApoyos}} (OTROS)</td>
+                            <td>{{ item.ApoyoEconomico }}</td>
+                            <td>{{ item.OtrosApoyos}}</td>
                             <td>{{ item.ActividadesRealizar }}</td>
                         </tr>
                     </tbody>
@@ -254,6 +254,10 @@ export default {
                     value: "ApoyoEconomico"
                 },
                 {
+                    text: "Apoyo Economico (OTROS)",
+                    value: "OtrosApoyos"
+                },
+                {
                     text: "Actividades a Realizar",
                     value: "ActividadesRealizar"
                 }
@@ -285,7 +289,7 @@ export default {
                 var connection = new WebSocket(
 
                     // cambiar por la ip del servidpr actual
-                    "ws://172.31.184.192:8888/scrapData"
+                    "ws://localhost:8888/scrapData"
                 );
 
                 connection.onopen = function() {
