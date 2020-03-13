@@ -230,7 +230,7 @@ func scraperData(info map[string]dataStruct) {
 
 	// printing visiting message for debug purposes
 	c.OnRequest(func(r *colly.Request) {
-		//log.Println("--VisitingProgramInfo:", r.URL.String())
+		log.Println("--VisitingProgramInfo:", r.URL.String())
 	})
 
 	c.Visit(urlProgramasPracticasProfesionalesFCC)
