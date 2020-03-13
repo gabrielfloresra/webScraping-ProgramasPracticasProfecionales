@@ -26,6 +26,7 @@ func scraperData(info map[string]dataStruct) {
 	c := colly.NewCollector(
 		// colly.AllowedDomains("https://www.clotheswebsite.com/"),
 		colly.CacheDir(".programasPracticasProfesionalesFCC_cache"),
+		colly.DetectCharset(),
 		// colly.MaxDepth(5), // keeping crawling limited for our initial experiments
 		colly.Async(true),
 	)
@@ -122,6 +123,9 @@ func scraperData(info map[string]dataStruct) {
 
 	c.OnHTML("div#Layer0>table[class=tableBUAPGrisAlternaRows]", func(e *colly.HTMLElement) {
 
+		// obtener los datos de una mejor manera
+		// data := e.ChildTexts("small")
+
 		folio := e.ChildText("tr:nth-child(2)>td:nth-child(2)")
 		folio = space.ReplaceAllString(folio, " ")
 
@@ -163,7 +167,7 @@ func scraperData(info map[string]dataStruct) {
 
 		apoyoEconomico := e.ChildText("tr:nth-child(33)>td:nth-child(2)")
 		apoyoEconomico = space.ReplaceAllString(apoyoEconomico, " ")
-
+		//fmt.Printf("\napoyo economico: %s", apoyoEconomico)
 		otrosApoyos := e.ChildText("tr:nth-child(34)>td:nth-child(2)")
 		otrosApoyos = space.ReplaceAllString(otrosApoyos, " ")
 
@@ -226,7 +230,7 @@ func scraperData(info map[string]dataStruct) {
 
 	// printing visiting message for debug purposes
 	c.OnRequest(func(r *colly.Request) {
-		log.Println("--VisitingProgramInfo:", r.URL.String())
+		//log.Println("--VisitingProgramInfo:", r.URL.String())
 	})
 
 	c.Visit(urlProgramasPracticasProfesionalesFCC)
