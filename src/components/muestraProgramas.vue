@@ -132,14 +132,14 @@
                                                 </v-col>
                                                 <v-col cols="12" sm="12" md="6">
                                                     <v-text-field
-                                                        label="Domicilio"
-                                                        v-model="dataDialog.Domicilio"
-                                                    ></v-text-field>
-                                                </v-col>
-                                                <v-col cols="12" sm="12" md="6">
-                                                    <v-text-field
                                                         label="Sector"
                                                         v-model="dataDialog.SectorEmpresa"
+                                                    ></v-text-field>
+                                                </v-col>
+                                                <v-col cols="12" sm="12" md="12">
+                                                    <v-text-field
+                                                        label="Domicilio"
+                                                        v-model="dataDialog.Domicilio"
                                                     ></v-text-field>
                                                 </v-col>
                                             </v-row>
